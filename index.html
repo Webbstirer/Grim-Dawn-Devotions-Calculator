@@ -1,0 +1,48 @@
+<script>
+// Edit your script here
+function calculate_devotions()
+{
+ if (dvmaxed.checked)
+ {
+  document.getElementById("thammer-checked").style.display = "inline";
+  document.getElementById("thammer-unchecked").style.display = "none";
+ }
+ else
+ {
+  document.getElementById("thammer-checked").style.display = "none";
+  document.getElementById("thammer-unchecked").style.display = "inline";
+ }
+}
+</script>
+<!-- edit your html here -->
+<style type="text/css">
+<!--
+ .chklist { margin-left: 40px; }
+-->
+</style>
+
+<label><H1><b>Devotions Calculator</b></H1></label><br>
+<input type = "checkbox" id = "dvmaxed" value = "maxall" checked/> <label for = "dvmaxed">Max all devotion skills?</label><br>
+<label><H2>Starting Constellation</H2></label>
+<label><H3>Crossroads</H3></label>
+	<p class="chklist">
+    	
+        <input type = "checkbox" id = "crBlue" value = "crossblue" /> <label for = "chkEggs">Crossroads Blue - +18 Defensive Ability</label><br>
+        <input type = "checkbox" id = "crRed" value = "crossred" /> <label for = "chkEggs">Crossroads Red - +5% Health</label><br>
+        <input type = "checkbox" id = "crGreen" value = "crossgreen" /> <label for = "chkEggs">Crossroads Green - +18 Offensive Ability</label><br>
+        <input type = "checkbox" id = "crPurple" value = "crosspurple" /> <label for = "chkEggs">Crossroads Purple - +18 Offensive Ability</label><br>
+        <input type = "checkbox" id = "crYellow" value = "crossyellow" /> <label for = "chkEggs">Crossroads Yellow - +5% Health</label><br>
+    </p>
+<label><H2>Tier 1 - Ascendant</H2></label>
+<label><H3>Anvil</H3></label>
+	<p class="chklist">
+        
+        <input type = "checkbox" id = "crBlue" value = "crossblue" /> <label for = "chkEggs">+15 Defensive Ability</label><br>
+        <input type = "checkbox" id = "crRed" value = "crossred" /> <label for = "chkEggs">+10 Physique</label><br>
+        <input type = "checkbox" id = "crGreen" value = "crossgreen" /> <label for = "chkEggs">Increases Armor Absorption by 3%</label><br>
+        <input type = "checkbox" id = "crPurple" value = "crosspurple" /> <label for = "chkEggs">+15 Defensive Ability, +20% Constitution</label><br>
+        <input type = "checkbox" id = "thammer"/> 
+        <span id="thammer-unchecked" style="display:none; font-style:italic;"><b>Targo's Hammer(lvl 1) (25% on Block)</b> - 30% Weapon Damage, 45 Physical Damage, +45% Internal Trauma Damage, 12% Chance to Stun</span>
+        <span id="thammer-checked" style="display:inline; font-weight:bolder"><b>Targo's Hammer(lvl 1) (25% on Block)</b> - 92% Weapon Damage, 302 Physical Damage, +145% Internal Trauma Damage, 50% Chance to Stun</span><br>         
+    </p>
+<input type=button value="Calculate" onClick="calculate_devotions()"><br>
