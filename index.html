@@ -1,18 +1,35 @@
 <script>
-// Edit your script here
+
 function calculate_devotions()
 {
  if (dvmaxed.checked)
  {
-  document.getElementById("thammer-checked").style.display = "inline";
-  document.getElementById("thammer-unchecked").style.display = "none";
+  document.getElementById("thammer-maxchecked").style.display = "inline";
+  document.getElementById("thammer-maxunchecked").style.display = "none";
  }
  else
  {
-  document.getElementById("thammer-checked").style.display = "none";
-  document.getElementById("thammer-unchecked").style.display = "inline";
+  document.getElementById("thammer-maxchecked").style.display = "none";
+  document.getElementById("thammer-maxunchecked").style.display = "inline";
  }
+ 
 }
+
+function change_checktext(ckbx)
+{
+   var d = ckbx.id;
+   if( ckbx.checked )
+   {
+      document.getElementById(d+"-checked").style.display = "inline";
+      document.getElementById(d+"-unchecked").style.display = "none";
+   }
+   else
+   {
+      document.getElementById(d+"-checked").style.display = "none";
+      document.getElementById(d+"-unchecked").style.display = "inline";
+   }
+}
+
 </script>
 <!-- edit your html here -->
 <style type="text/css">
@@ -20,29 +37,61 @@ function calculate_devotions()
  .chklist { margin-left: 40px; }
 -->
 </style>
-
 <label><H1><b>Devotions Calculator</b></H1></label><br>
 <input type = "checkbox" id = "dvmaxed" value = "maxall" checked/> <label for = "dvmaxed">Max all devotion skills?</label><br>
 <label><H2>Starting Constellation</H2></label>
 <label><H3>Crossroads</H3></label>
 	<p class="chklist">
-    	
-        <input type = "checkbox" id = "crBlue" value = "crossblue" /> <label for = "chkEggs">Crossroads Blue - +18 Defensive Ability</label><br>
-        <input type = "checkbox" id = "crRed" value = "crossred" /> <label for = "chkEggs">Crossroads Red - +5% Health</label><br>
-        <input type = "checkbox" id = "crGreen" value = "crossgreen" /> <label for = "chkEggs">Crossroads Green - +18 Offensive Ability</label><br>
-        <input type = "checkbox" id = "crPurple" value = "crosspurple" /> <label for = "chkEggs">Crossroads Purple - +18 Offensive Ability</label><br>
-        <input type = "checkbox" id = "crYellow" value = "crossyellow" /> <label for = "chkEggs">Crossroads Yellow - +5% Health</label><br>
+    	  <input type = "checkbox" id = "crBlue" onclick="change_checktext(this)"> 
+        <span id="crBlue-unchecked" style="display:inline; font-style:italic;">Crossroads Blue - +18 Defensive Ability</span>
+        <span id="crBlue-checked" style="display:none; font-style:normal;">Crossroads Blue - +18 Defensive Ability</span><br>
+        <input type = "checkbox" id = "crRed" onclick="change_checktext(this)">
+        <span id="crRed-unchecked" style="display:inline; font-style:italic;">Crossroads Red - +5% Health</span>
+        <span id="crRed-checked" style="display:none; font-style:normal;">Crossroads Red - +5% Health</span><br>
+        <input type = "checkbox" id = "crGreen" onclick="change_checktext(this)">
+        <span id="crGreen-unchecked" style="display:inline; font-style:italic;">Crossroads Green - +18 Offensive Ability</span>
+        <span id="crGreen-checked" style="display:none; font-style:normal;">Crossroads Green - +18 Offensive Ability</span><br>
+        <input type = "checkbox" id = "crPurple" onclick="change_checktext(this)">
+        <span id="crPurple-unchecked" style="display:inline; font-style:italic;">Crossroads Purple - +18 Offensive Ability</span>
+        <span id="crPurple-checked" style="display:none; font-style:normal;">Crossroads Purple - +18 Offensive Ability</span><br>
+        <input type = "checkbox" id = "crYellow" onclick="change_checktext(this)">
+        <span id="crYellow-unchecked" style="display:inline; font-style:italic;">Crossroads Yellow - +5% Health</span>
+        <span id="crYellow-checked" style="display:none; font-style:normal;">Crossroads Yellow - +5% Health</span><br>
     </p>
 <label><H2>Tier 1 - Ascendant</H2></label>
 <label><H3>Anvil</H3></label>
 	<p class="chklist">
         
-        <input type = "checkbox" id = "crBlue" value = "crossblue" /> <label for = "chkEggs">+15 Defensive Ability</label><br>
-        <input type = "checkbox" id = "crRed" value = "crossred" /> <label for = "chkEggs">+10 Physique</label><br>
-        <input type = "checkbox" id = "crGreen" value = "crossgreen" /> <label for = "chkEggs">Increases Armor Absorption by 3%</label><br>
-        <input type = "checkbox" id = "crPurple" value = "crosspurple" /> <label for = "chkEggs">+15 Defensive Ability, +20% Constitution</label><br>
-        <input type = "checkbox" id = "thammer"/> 
-        <span id="thammer-unchecked" style="display:none; font-style:italic;"><b>Targo's Hammer(lvl 1) (25% on Block)</b> - 30% Weapon Damage, 45 Physical Damage, +45% Internal Trauma Damage, 12% Chance to Stun</span>
-        <span id="thammer-checked" style="display:inline; font-weight:bolder"><b>Targo's Hammer(lvl 1) (25% on Block)</b> - 92% Weapon Damage, 302 Physical Damage, +145% Internal Trauma Damage, 50% Chance to Stun</span><br>         
+        <input type = "checkbox" id = "anvil1" onclick="change_checktext(this)">
+        <span id="anvil1-unchecked" style="display:inline; font-style:italic;">+15 Defensive Ability</span>
+        <span id="anvil1-checked" style="display:none; font-style:normal;">+15 Defensive Ability</span><br>
+        <input type = "checkbox" id = "anvil2" onclick="change_checktext(this)"> 
+        <span id="anvil2-unchecked" style="display:inline; font-style:italic;">+10 Physique</span>
+        <span id="anvil2-checked" style="display:none; font-style:normal;">+10 Physique</span><br>
+        <input type = "checkbox" id = "anvil3" onclick="change_checktext(this)"> 
+        <span id="anvil3-unchecked" style="display:inline; font-style:italic;">Increases Armor Absorption by 3%</span>
+        <span id="anvil3-checked" style="display:none; font-style:normal;">Increases Armor Absorption by 3%</span><br>
+        <input type = "checkbox" id = "anvil4" onclick="change_checktext(this)">
+        <span id="anvil4-unchecked" style="display:inline; font-style:italic;">+15 Defensive Ability, +20% Constitution</span>
+        <span id="anvil4-checked" style="display:none; font-style:normal;">+15 Defensive Ability, +20% Constitution</span><br>
+        <input type = "checkbox" id = "thammer" /> 
+        <span id="thammer-maxunchecked" style="display:none; font-style:italic;"><b>Targo's Hammer(lvl 1) (25% on Block)</b> - 30% Weapon Damage, 45 Physical Damage, +45% Internal Trauma Damage, 12% Chance to Stun</span>
+        <span id="thammer-maxchecked" style="display:inline; font-weight:normal"><b>Targo's Hammer(lvl 1) (25% on Block)</b> - 92% Weapon Damage, 302 Physical Damage, +145% Internal Trauma Damage, 50% Chance to Stun</span>
     </p>
+<label><H3>Empty Throne</H3></label>
+  <p class="chklist">
+        
+        <input type = "checkbox" id = "ethrone1" onclick="change_checktext(this)">
+        <span id="ethrone1-unchecked" style="display:inline; font-style:italic;">15% reduced Stun Duration</span>
+        <span id="ethrone1-checked" style="display:none; font-style:normal;">15% reduced Stun Duration</span><br>
+        <input type = "checkbox" id = "ethrone2" onclick="change_checktext(this)">
+        <span id="ethrone2-unchecked" style="display:inline; font-style:italic;">8% Pierce Resistance; Bonus to All Pets: 8% Pierce Resistance</span>
+        <span id="ethrone2-checked" style="display:none; font-style:normal;">8% Pierce Resistance; Bonus to All Pets: 8% Pierce Resistance</span><br>
+        <input type = "checkbox" id = "ethrone3" onclick="change_checktext(this)">
+        <span id="ethrone3-unchecked" style="display:inline; font-style:italic;">8% Chaos Resistance; Bonus to All Pets: 8% Chaos Resistance</span>
+        <span id="ethrone3-checked" style="display:none; font-style:normal;">8% Chaos Resistance; Bonus to All Pets: 8% Chaos Resistance</span><br>
+        <input type = "checkbox" id = "ethrone4" onclick="change_checktext(this)">
+        <span id="ethrone4-unchecked" style="display:inline; font-style:italic;">8% Aether Resistance; Bonus to All Pets: 8% Aether Resistance</span>
+        <span id="ethrone4-checked" style="display:none; font-style:normal;">8% Aether Resistance; Bonus to All Pets: 8% Aether Resistance</span><br>
+    </p>    
 <input type=button value="Calculate" onClick="calculate_devotions()"><br>
