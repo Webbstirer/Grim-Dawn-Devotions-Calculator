@@ -34,10 +34,11 @@ class Devotes extends React.Component {
         var nextChecked = this.changeChecked(e.id,!this.getChecked(e.id),this.state.checkedItems);
         this.setState({checkedItems:nextChecked,useMax:this.getChecked('special')});
     }
+
     render(){
         var values = [
             {id:'special',text:"Max Devotions"},
-            {id:'crBlue',minText:"Crossroads Blue - +18 Defensive Ability",maxText:"Crossroads Blue - +18 Defensive Ability"},
+            {id:'crBlue',minText:"Crossroads Blue - +18 Defensive Ability",maxText:"Crossroads Blue - +18 Defensive Ability", da:"18"},
             {id:'crRed',minText:"Crossroads Red - +5% Health",maxText:"Crossroads Red - +5% Health"},
             {id:'crGreen',minText:"Crossroads Green - +18 Offensive Ability",maxText:"Crossroads Green - +18 Offensive Ability"},
             {id:'crPurple',minText:"Crossroads Purple - +18 Offensive Ability",maxText:"Crossroads Purple - +18 Offensive Ability"},
@@ -67,7 +68,28 @@ class Devotes extends React.Component {
             {id:'falc5',minText:"Falcon Swoop - 2 Second Skill Recharge, 3 Projectile(s), 100% Chance to pass through Enemies, 0.1 Meter Radius, 6% Weapon Damage, 28 Physical Damage 150 Bleeding Damage over 3 Seconds",maxText:"Falcon Swoop(20/20) - 2 Second Skill Recharge, 6 Projectile(s), 100% Chance to pass through Enemies, 0.1 Meter Radius, 20% Weapon Damage, 98 Physical Damage 405 Bleeding Damage over 3 Seconds"}
         ]
 
-        return (<div><b>Crossroads</b>
+        var values5 = [
+            {id:'hamr1',minText:"+15% Physical Damage",maxText:"+15% Physical Damage"},
+            {id:'hamr2',minText:"+30% Internal Trauma Damage, +8 Defensive Ability",maxText:"+30% Internal Trauma Damage, +8 Defensive Ability"},
+            {id:'hamr3',minText:"+15% Physical Damage, +30% Internal Trauma Damage",maxText:"+15% Physical Damage, +30% Internal Trauma Damage"}
+        ]
+
+        var values6 = [
+            {id:'harp1',minText:"+15% Pierce Damage, +15% Cold Damage",maxText:"+15% Pierce Damage, +15% Cold Damage"},
+            {id:'harp2',minText:"+10 Cunning, +1.5 Energy regenerated per Second",maxText:"+10 Cunning, +1.5 Energy regenerated per Second"},
+            {id:'harp3',minText:"5-10 Piercing Damage, +24% Pierce Damage, +24% Cold Damage",maxText:"5-10 Piercing Damage, +24% Pierce Damage, +24% Cold Damage"},
+            {id:'harp4',minText:"+15 Offensive Ability, 10% Bleeding Resistance",maxText:"+15 Offensive Ability, 10% Bleeding Resistance"}
+        ]    
+
+        var values7 = [
+            {id:'harp1',minText:"+8 Cunning, Bonus to All Pets: +15% to All Damage",maxText:"+8 Cunning, Bonus to All Pets: +15% to All Damage"},
+            {id:'harp2',minText:"10% Elemental Resistance, Bonus to All Pets: 10% Elemental Resistance",maxText:"10% Elemental Resistance, Bonus to All Pets: 10% Elemental Resistance"},
+            {id:'harp3',minText:"33 Bleeding Damage over 3 seconds, Bonus to All Pets: 12 Bleeding Damage over 3 seconds, +25% to All Damage",maxText:"33 Bleeding Damage over 3 seconds, Bonus to All Pets: 12 Bleeding Damage over 3 seconds, +25% to All Damage"},
+            {id:'harp4',minText:"+35% Bleeding Damage, Bonus to All Pets: 24 Bleeding Damage over 3 seconds, +60% Bleeding Damage, +5% Attack Speed",maxText:"+35% Bleeding Damage, Bonus to All Pets: 24 Bleeding Damage over 3 seconds, +60% Bleeding Damage, +5% Attack Speed"}
+        ]    
+
+        return (<div><u><b>Starting Constellation</b></u><br></br>
+        		<b>Crossroads</b>
                 { values.map( v =>
                     (<DevChkBox
                         key={v.id}
@@ -76,8 +98,10 @@ class Devotes extends React.Component {
                         onChange={this.onChange.bind(null,v)}
                         textstyle={this.getChecked(v.id)?{fontStyle:'normal'}:{fontStyle:'italic'}}
                         />)
+                        
                     )
                 }
+                <u><b>Teir 1 Ascendant</b></u><br></br>
                 <b>Anvil</b>
                 { values2.map( v2 =>
                     (<DevChkBox
@@ -111,8 +135,47 @@ class Devotes extends React.Component {
                         />)
                     )
                 }
+                <b>Hammer</b>
+                { values5.map( v5 =>
+                    (<DevChkBox
+                        key={v5.id}
+                        id={v5.id}
+                        text={v5.text? v5.text : this.getChecked('special')?v5.maxText:v5.minText}
+                        onChange={this.onChange.bind(null,v5)}
+                        textstyle={this.getChecked(v5.id)?{fontStyle:'normal'}:{fontStyle:'italic'}}
+                        />)
+                    )
+                }
+                <b>Harpy</b>
+                { values6.map( v6 =>
+                    (<DevChkBox
+                        key={v6.id}
+                        id={v6.id}
+                        text={v6.text? v6.text : this.getChecked('special')?v6.maxText:v6.minText}
+                        onChange={this.onChange.bind(null,v6)}
+                        textstyle={this.getChecked(v6.id)?{fontStyle:'normal'}:{fontStyle:'italic'}}
+                        />)
+                    )
+                }
+                <b>Nighttalon</b>
+                { values7.map( v7 =>
+                    (<DevChkBox
+                        key={v7.id}
+                        id={v7.id}
+                        text={v7.text? v7.text : this.getChecked('special')?v7.maxText:v7.minText}
+                        onChange={this.onChange.bind(null,v7)}
+                        textstyle={this.getChecked(v7.id)?{fontStyle:'normal'}:{fontStyle:'italic'}}
+                        />)
+                    )
+                }
+                <b>Bonuses</b>
+                {
+
+                }
                 </div>)
     }
 }
+
+
 
 ReactDOM.render(<Devotes />, document.getElementById("app"));
