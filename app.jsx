@@ -42,11 +42,53 @@ var tiers = // : Tier[] =
                             { id: 'et4', minText: "8% Aether Resistance, Bonus to All Pets: 8% Aether Resistance", maxText: "8% Aether Resistance, Bonus to All Pets: 8% Aether Resistance" },
                         ]
                 }
-
             ]
         }
-
     ];
+
+const BonusNav = props =>
+(
+
+                <nav className="navbar navbar-expand-lg">
+                    <div className="nav-item">
+                        DA {props.da}
+                    </div>
+                    <div className="nav-item">
+                        OA {props.oa}
+                    </div>
+                    {/* <a className="navbar-brand" href="#">Navbar</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item active">
+                                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Link</a>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </a>
+                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a className="dropdown-item" href="#">Action</a>
+                                    <a className="dropdown-item" href="#">Another action</a>
+                                    <div className="dropdown-divider"></div>
+                                    <a className="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
+                            </li>
+                        </ul>
+                        <form className="form-inline my-2 my-lg-0">
+                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div> */}
+                </nav>
+);
 const SetDisplay = props =>
     (
         <div className="panel border col">
@@ -102,6 +144,17 @@ class Devotes extends React.Component {
     }
 
     render() {
+        var bonusTotal = {da:0,oa:0};
+        var keys = Object.keys(bonusTotal);
+        var incrementer = (d,k) => {
+            console.log('checking x for y', d, k);
+          if(d[k] != null) bonusTotal[k] += d[k];
+        };
+        var allSets = window.allSets = tiers.reduce((acc,v) => acc.concat(v.sets),[]);
+        var allDevos = window.allDevos = allSets.reduce((acc,v)=> acc.concat(v.values),[]);
+        var checked = window.checked = allDevos.filter(d=> this.getChecked(d.id));
+
+        checked.map(d =>keys.map(k => incrementer(d,k)));
 
         var values4 = [
             { id: 'falc1', minText: "+15% Physical Damage", maxText: "+15% Physical Damage" },
@@ -131,7 +184,15 @@ class Devotes extends React.Component {
             { id: 'harp4', minText: "+35% Bleeding Damage, Bonus to All Pets: 24 Bleeding Damage over 3 seconds, +60% Bleeding Damage, +5% Attack Speed", maxText: "+35% Bleeding Damage, Bonus to All Pets: 24 Bleeding Damage over 3 seconds, +60% Bleeding Damage, +5% Attack Speed" }
         ]
 
-        return (<div className="fluid-container"><u><b>Starting Constellation</b></u><br></br>
+        return (<div>
+        <header className="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar navbar-fixed-top">
+
+            <div>
+                <BonusNav oa={bonusTotal.oa} da={bonusTotal.da} />
+            </div>
+        </header>
+        <div className="fluid-container">
+            <u><b>Starting Constellation</b></u><br></br>
             {
                 tiers.map(t =>
                     <div key={t.tier} className="panel border col">
@@ -188,6 +249,7 @@ class Devotes extends React.Component {
             {
 
             }
+        </div>
         </div>)
     }
 }
