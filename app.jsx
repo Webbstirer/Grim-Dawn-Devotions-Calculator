@@ -1,19 +1,4 @@
 
-//   interface Devotion extends Partial<BonusTotal> {
-//     id:string
-//     text?:string
-//     minText?:string
-//     maxText?:string
-
-//   }
-//   interface DevotionSet {
-//     title:string
-//     values:Devotion[]
-//   }
-
-//   var totalBonuses : BonusTotal = {da:0,health:0}
-
-
 var tiers = // : Tier[] =
     [
         {
@@ -46,6 +31,16 @@ var tiers = // : Tier[] =
                         { id: 'anv4', minText: "+15 Defensive Ability, +20% Constitution", maxText: "+15 Defensive Ability, +20% Constitution" },
                         { id: 'anv5', minText: "Targo's Hammer - 0.1 Second skill Recharge, 100% Chance to pass through Enemies, 0.3 Meter Radius, 15% Weapon Damage, 28 Physical Damage, +50% Internal Trauma Damage, 10% Chance of Stun target for 1 Second", maxText: "Targo's Hammer(20/20) - 0.1 Second skill Recharge, 100% Chance to pass through Enemies, 0.3 Meter Radius, 35% Weapon Damage, 168 Physical Damage, +250% Internal Trauma Damage, 50% Chance of Stun target for 1 Second" }
                     ]
+                },
+                {
+                    title: 'Empty Throne',
+                    values:
+                        [
+                            { id: 'et1', minText: "15% reduced Stun Duration", maxText: "15% reduced Stun Duration" },
+                            { id: 'et2', minText: "8% Pierce Resistance, Bonus to All Pets: 8% Pierce Resistance", maxText: "8% Pierce Resistance, Bonus to All Pets: 8% Pierce Resistance" },
+                            { id: 'et3', minText: "8% Chaos Resistance, Bonus to All Pets: 8% Chaos Resistance", maxText: "8% Chaos Resistance, Bonus to All Pets: 8% Chaos Resistance" },
+                            { id: 'et4', minText: "8% Aether Resistance, Bonus to All Pets: 8% Aether Resistance", maxText: "8% Aether Resistance, Bonus to All Pets: 8% Aether Resistance" },
+                        ]
                 }
 
             ]
@@ -94,12 +89,6 @@ class Devotes extends React.Component {
     render() {
 
 
-        var values3 = [
-            { id: 'et1', minText: "15% reduced Stun Duration", maxText: "15% reduced Stun Duration" },
-            { id: 'et2', minText: "8% Pierce Resistance, Bonus to All Pets: 8% Pierce Resistance", maxText: "8% Pierce Resistance, Bonus to All Pets: 8% Pierce Resistance" },
-            { id: 'et3', minText: "8% Chaos Resistance, Bonus to All Pets: 8% Chaos Resistance", maxText: "8% Chaos Resistance, Bonus to All Pets: 8% Chaos Resistance" },
-            { id: 'et4', minText: "8% Aether Resistance, Bonus to All Pets: 8% Aether Resistance", maxText: "8% Aether Resistance, Bonus to All Pets: 8% Aether Resistance" },
-        ]
 
         var values4 = [
             { id: 'falc1', minText: "+15% Physical Damage", maxText: "+15% Physical Damage" },
@@ -152,41 +141,6 @@ class Devotes extends React.Component {
                             ))}
                     </div>
                 )
-            }
-            {/* <b>Crossroads</b>
-                  { values.map( v =>
-                      (<DevChkBox
-                          key={v.id}
-                          id={v.id}
-                          text={v.text? v.text : this.getChecked('special')?v.maxText:v.minText}
-                          onChange={this.onChange.bind(null,v)}
-                          textstyle={this.getChecked(v.id)?{fontStyle:'normal'}:{fontStyle:'italic'}}
-                          />)
-
-                      )
-                  } */}
-            {/* <u><b>Teir 1 Ascendant</b></u><br></br>
-                  <b>Anvil</b>
-                  { values2.map( v2 =>
-                      (<DevChkBox
-                          key={v2.id}
-                          id={v2.id}
-                          text={v2.text? v2.text : this.getChecked('special')?v2.maxText:v2.minText}
-                          onChange={this.onChange.bind(null,v2)}
-                          textstyle={this.getChecked(v2.id)?{fontStyle:'normal'}:{fontStyle:'italic'}}
-                          />)
-                      )
-                  } */}
-            <b>Empty Throne</b>
-            {values3.map(v3 =>
-                (<DevChkBox
-                    key={v3.id}
-                    id={v3.id}
-                    text={v3.text ? v3.text : this.getChecked('special') ? v3.maxText : v3.minText}
-                    onChange={this.onChange.bind(null, v3)}
-                    textstyle={this.getChecked(v3.id) ? { fontStyle: 'normal' } : { fontStyle: 'italic' }}
-                />)
-            )
             }
             <b>Falcon</b>
             {values4.map(v4 =>
