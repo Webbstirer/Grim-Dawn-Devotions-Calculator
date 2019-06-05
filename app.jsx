@@ -47,7 +47,22 @@ var tiers = // : Tier[] =
         }
 
     ];
-
+const SetDisplay = props =>
+    (
+        <div className="panel border col">
+            <b>{props.title}</b>
+            {props.values.map(v =>
+                (
+                    <DevChkBox
+                        key={v.id}
+                        id={v.id}
+                        text={v.text ? v.text : props.getChecked('special') ? v.maxText : v.minText}
+                        onChange={props.onChange.bind(null, v)}
+                        textstyle={props.getChecked(v.id) ? { fontStyle: 'normal' } : { fontStyle: 'italic' }}
+                    />
+                ))}
+        </div>
+    );
 
 const DevChkBox = props =>
     // use the standard dev
@@ -88,8 +103,6 @@ class Devotes extends React.Component {
 
     render() {
 
-
-
         var values4 = [
             { id: 'falc1', minText: "+15% Physical Damage", maxText: "+15% Physical Damage" },
             { id: 'falc2', minText: "+24% Bleeding Damage", maxText: "+24% Bleeding Damage" },
@@ -123,22 +136,7 @@ class Devotes extends React.Component {
                 tiers.map(t =>
                     <div key={t.tier} className="panel border col">
                         <div>Tier {t.tier}</div>
-                        {t.sets.map(ds =>
-                            (
-                                <div key={ds.title} className="panel border col">
-                                    <b>{ds.title}</b>
-                                    {ds.values.map(v =>
-                                        (
-                                            <DevChkBox
-                                                key={v.id}
-                                                id={v.id}
-                                                text={v.text ? v.text : this.getChecked('special') ? v.maxText : v.minText}
-                                                onChange={this.onChange.bind(null, v)}
-                                                textstyle={this.getChecked(v.id) ? { fontStyle: 'normal' } : { fontStyle: 'italic' }}
-                                            />
-                                        ))}
-                                </div>
-                            ))}
+                        {t.sets.map(ds => <SetDisplay key={ds.title} title={ds.title} values={ds.values} onChange={this.onChange} getChecked={this.getChecked} />)}
                     </div>
                 )
             }
