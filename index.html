@@ -10,11 +10,11 @@ function max_devotions()
   if(allchecks[i].type=='checkbox' && allchecks[i].checked==true)
         selectedBoxes+=allchecks[i].id+"\n";
   }
-  {  
+  {
     document.getElementById(selectedBoxes+"-maxchecked").style.display = "inline";
     document.getElementById(selectedBoxes+"-maxunchecked").style.display = "none";
   }
-  
+
 }
 
 function change_checktext(ckbx)
@@ -49,7 +49,8 @@ function calculate_devotions()
 <label><H2>Starting Constellation</H2></label>
 <label><H3>Crossroads</H3></label>
 	<p class="chklist">
-    	  <input type = "checkbox" id = "crBlue" name = "allcheckboxes" onclick="change_checktext(this)"> 
+    	  <input type = "checkbox" id = "crBlueChk" name = "allcheckboxes" onclick="change_checktext(this)">
+        /* <span id="crBlue" data-min='Crossroads Blue - +18 Defensive Ability' data-max='Crossroads Blue - +18 Defensive Ability' /> */
         <span id="crBlue-unchecked" style="display:inline; font-style:italic;">Crossroads Blue - +18 Defensive Ability</span>
         <span id="crBlue-checked" style="display:none; font-style:normal;">Crossroads Blue - +18 Defensive Ability</span><br>
         <input type = "checkbox" id = "crRed" name = "allcheckboxes" onclick="change_checktext(this)">
@@ -68,20 +69,20 @@ function calculate_devotions()
 <label><H2>Tier 1 - Ascendant</H2></label>
 <label><H3>Anvil</H3></label>
 	<p class="chklist">
-        
+
         <input type = "checkbox" id = "anvil1" name = "allcheckboxes" onclick="change_checktext(this)">
         <span id="anvil1-unchecked" style="display:inline; font-style:italic;">+15 Defensive Ability</span>
         <span id="anvil1-checked" style="display:none; font-style:normal;">+15 Defensive Ability</span><br>
-        <input type = "checkbox" id = "anvil2" name = "allcheckboxes" onclick="change_checktext(this)"> 
+        <input type = "checkbox" id = "anvil2" name = "allcheckboxes" onclick="change_checktext(this)">
         <span id="anvil2-unchecked" style="display:inline; font-style:italic;">+10 Physique</span>
         <span id="anvil2-checked" style="display:none; font-style:normal;">+10 Physique</span><br>
-        <input type = "checkbox" id = "anvil3" name = "allcheckboxes" onclick="change_checktext(this)"> 
+        <input type = "checkbox" id = "anvil3" name = "allcheckboxes" onclick="change_checktext(this)">
         <span id="anvil3-unchecked" style="display:inline; font-style:italic;">Increases Armor Absorption by 3%</span>
         <span id="anvil3-checked" style="display:none; font-style:normal;">Increases Armor Absorption by 3%</span><br>
         <input type = "checkbox" id = "anvil4" name = "allcheckboxes" onclick="change_checktext(this)">
         <span id="anvil4-unchecked" style="display:inline; font-style:italic;">+15 Defensive Ability, +20% Constitution</span>
         <span id="anvil4-checked" style="display:none; font-style:normal;">+15 Defensive Ability, +20% Constitution</span><br>
-        <input type = "checkbox" id = "thammer" name = "allcheckboxes" onclick="change_checktext(this)"> 
+        <input type = "checkbox" id = "thammer" name = "allcheckboxes" onclick="change_checktext(this)">
         <span id="thammer-unchecked" style="display:inline; font-style:italic;"><b>Targo's Hammer(lvl 1) (25% on Block)</b> - 30% Weapon Damage, 45 Physical Damage, +45% Internal Trauma Damage, 12% Chance to Stun</span>
         <span id="thammer-maxchecked" style="display:none; font-weight:normal;"><b>Targo's Hammer(lvl 1) (25% on Block)</b> - 92% Weapon Damage, 302 Physical Damage, +145% Internal Trauma Damage, 50% Chance to Stun</span>
         <span id="thammer-checked" style="display:none; font-weight:normal;"><b>Targo's Hammer(lvl 1) (25% on Block)</b> - 30% Weapon Damage, 45 Physical Damage, +45% Internal Trauma Damage, 12% Chance to Stun</span>
@@ -89,7 +90,7 @@ function calculate_devotions()
     </p>
 <label><H3>Empty Throne</H3></label>
   <p class="chklist">
-        
+
         <input type = "checkbox" id = "ethrone1" name = "allcheckboxes" onclick="change_checktext(this)">
         <span id="ethrone1-unchecked" style="display:inline; font-style:italic;">15% reduced Stun Duration</span>
         <span id="ethrone1-checked" style="display:none; font-style:normal;">15% reduced Stun Duration</span><br>
@@ -102,5 +103,5 @@ function calculate_devotions()
         <input type = "checkbox" id = "ethrone4" name = "allcheckboxes" onclick="change_checktext(this)">
         <span id="ethrone4-unchecked" style="display:inline; font-style:italic;">8% Aether Resistance; Bonus to All Pets: 8% Aether Resistance</span>
         <span id="ethrone4-checked" style="display:none; font-style:normal;">8% Aether Resistance; Bonus to All Pets: 8% Aether Resistance</span><br>
-    </p>    
+    </p>
 <input type=button value="Calculate" onClick="calculate_devotions()"><br>
