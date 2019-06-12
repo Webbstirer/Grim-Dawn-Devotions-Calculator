@@ -10,11 +10,11 @@ var tiers = // : Tier[] =
                     values:
                         [
                             { id: 'special', text: "Max Devotions" },
-                            { id: 'crBlue', minText: "Crossroads Blue - +18 Defensive Ability", maxText: "Crossroads Blue - +18 Defensive Ability", da: 18 },
-                            { id: 'crRed', minText: "Crossroads Red - +5% Health", maxText: "Crossroads Red - +5% Health", health: .05 },
-                            { id: 'crGreen', minText: "Crossroads Green - +18 Offensive Ability", maxText: "Crossroads Green - +18 Offensive Ability" },
-                            { id: 'crPurple', minText: "Crossroads Purple - +18 Offensive Ability", maxText: "Crossroads Purple - +18 Offensive Ability" },
-                            { id: 'crYellow', minText: "Crossroads Yellow - +5% Health", maxText: "Crossroads Yellow - +5% Health" }
+                            { id: 'crBlue', minText: "Blue - +18 Defensive Ability", maxText: "Crossroads Blue - +18 Defensive Ability", da: 18 },
+                            { id: 'crRed', minText: "Red - +5% Health", maxText: "Crossroads Red - +5% Health", health: .05 },
+                            { id: 'crGreen', minText: "Green - +18 Offensive Ability", maxText: "Crossroads Green - +18 Offensive Ability" },
+                            { id: 'crPurple', minText: "Purple - +18 Offensive Ability", maxText: "Crossroads Purple - +18 Offensive Ability" },
+                            { id: 'crYellow', minText: "Yellow - +5% Health", maxText: "Crossroads Yellow - +5% Health" }
                         ]
                 },
 
