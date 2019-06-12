@@ -76,7 +76,7 @@ var tiers = // : Tier[] =
                     values:
                         [
                             { id: 'nightt1', minText: "+8 Cunning, Bonus to All Pets: +15% to All Damage", maxText: "+8 Cunning, Bonus to All Pets: +15% to All Damage", cunn: 8, palld: 15 },
-                            { id: 'nightt2', minText: "10% Elemental Resistance, Bonus to All Pets: 10% Elemental Resistance", maxText: "10% Elemental Resistance, Bonus to All Pets: 10% Elemental Resistance", elemr: 10, pelemr: 10 },
+                            { id: 'nightt2', minText: "10% Elemental Resistance, Bonus to All Pets: 10% Elemental Resistance", maxText: "10% Elemental Resistance, Bonus to All Pets: 10% Elemental Resistance", firer: 10, coldr: 10, lightr: 10, pelemr: 10 },
                             { id: 'nightt3', minText: "33 Bleeding Damage over 3 seconds, Bonus to All Pets: 12 Bleeding Damage over 3 seconds, +25% to All Damage", maxText: "33 Bleeding Damage over 3 seconds, Bonus to All Pets: 12 Bleeding Damage over 3 seconds, +25% to All Damage", bleedot: 33, pbleedot: 12, palld: 25 },
                             { id: 'nightt4', minText: "+35% Bleeding Damage, Bonus to All Pets: 24 Bleeding Damage over 3 seconds, +60% Bleeding Damage, +5% Attack Speed", maxText: "+35% Bleeding Damage, Bonus to All Pets: 24 Bleeding Damage over 3 seconds, +60% Bleeding Damage, +5% Attack Speed", bleedd: 35, pbleedot: 24, pbleedd: 60, pas: 5 }
                         ]
@@ -130,12 +130,32 @@ const BonusNav = props =>
                             <tr>
                                 <td>
                                     <div className="nav-item">
-                                    Armor Absorb %: {props.armora}
+                                    Fire Resist%: {props.firer}
                                     </div>
                                 </td>
                                 <td>
                                     <div className="nav-item">
-                                    Constitution %: {props.consti}
+                                    Cold Resist%: {props.coldr}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="nav-item">
+                                    Lightning Resist%: {props.lightr}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="nav-item">
+                                    Aether Resist %: {props.aetherr}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="nav-item">
+                                    Chaos Resist %: {props.chaosr}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="nav-item">
+                                    Bleed Resist %: {props.bleedr}
                                     </div>
                                 </td>
                                 <td>
@@ -148,6 +168,13 @@ const BonusNav = props =>
                                     Pierce Resist %: {props.piercer}
                                     </div>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="nav-item">
+                                    Armor Absorb %: {props.armora}
+                                    </div>
+                                </td>
                                 <td>
                                     <div className="nav-item">
                                     Pet Pierce Resist %: {props.ppiercer}
@@ -155,19 +182,7 @@ const BonusNav = props =>
                                 </td>
                                 <td>
                                     <div className="nav-item">
-                                    Chaos Resist %: {props.chaosr}
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>    
-                                <td>
-                                    <div className="nav-item">
                                     Pet Chaos Resist %: {props.pchaosr}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="nav-item">
-                                    Aether Resist %: {props.aetherr}
                                     </div>
                                 </td>
                                 <td>
@@ -214,7 +229,7 @@ const BonusNav = props =>
                                 </td>
                                 <td>
                                     <div className="nav-item">
-                                    Bleed Resist %: {props.bleedr}
+                                    Constitution %: {props.consti}
                                     </div>
                                 </td>
                                 <td>
@@ -224,11 +239,6 @@ const BonusNav = props =>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    <div className="nav-item">
-                                    Elemental Resist%: {props.elemr}
-                                    </div>
-                                </td>
                                 <td>
                                     <div className="nav-item">
                                     Pet Elemental Resist%: {props.pelemr}
@@ -346,7 +356,7 @@ class Devotes extends React.Component {
     }
 
     render() {
-        var bonusTotal = {da:0,oa:0,healthp:0,phys:0,cunn:0,spir:0,armora:0,consti:0,stund:0,piercer:0,ppiercer:0,chaosr:0,pchaosr:0,aetherr:0,paetherr:0,physd:0,bleedd:0,itd:0,coldd:0,pierced:0,energyrps:0,fpierced:0,bleedr:0,palld:0,elemr:0,pelemr:0,bleedot:0,pbleedot:0,pbleedd:0,pas:0};
+        var bonusTotal = {da:0,oa:0,healthp:0,phys:0,cunn:0,spir:0,armora:0,consti:0,stund:0,piercer:0,ppiercer:0,chaosr:0,pchaosr:0,aetherr:0,paetherr:0,physd:0,bleedd:0,itd:0,coldd:0,pierced:0,energyrps:0,fpierced:0,bleedr:0,palld:0,firer:0,coldr:0,lightr:0,pelemr:0,bleedot:0,pbleedot:0,pbleedd:0,pas:0};
         var keys = Object.keys(bonusTotal);
         var incrementer = (d,k) => {
             //console.log('checking x for y', d, k);
@@ -364,7 +374,7 @@ class Devotes extends React.Component {
         <header className="navbar navbar-light bg-dan bd-navbar navbar-fixed-top">
 
             <div>
-                <BonusNav oa={bonusTotal.oa} da={bonusTotal.da} healthp={bonusTotal.healthp} phys={bonusTotal.phys} cunn={bonusTotal.cunn} spir={bonusTotal.spir} armora={bonusTotal.armora} consti={bonusTotal.consti} stund={bonusTotal.stund} piercer={bonusTotal.piercer} ppiercer={bonusTotal.ppiercer} chaosr={bonusTotal.chaosr} pchaosr={bonusTotal.pchaosr} aetherr={bonusTotal.aetherr} paetherr={bonusTotal.paetherr} physd={bonusTotal.physd} bleedd={bonusTotal.bleedd} itd={bonusTotal.itd} coldd={bonusTotal.coldd} pierced={bonusTotal.pierced} energyrps={bonusTotal.energyrps} fpierced={bonusTotal.fpierced} bleedr={bonusTotal.bleedr} palld={bonusTotal.palld} elemr={bonusTotal.elemr} pelemr={bonusTotal.pelemr} bleedot={bonusTotal.bleedot} pbleedot={bonusTotal.pbleedot} pbleedd={bonusTotal.pbleedd} pas={bonusTotal.pas} />
+                <BonusNav oa={bonusTotal.oa} da={bonusTotal.da} healthp={bonusTotal.healthp} phys={bonusTotal.phys} cunn={bonusTotal.cunn} spir={bonusTotal.spir} armora={bonusTotal.armora} consti={bonusTotal.consti} stund={bonusTotal.stund} piercer={bonusTotal.piercer} ppiercer={bonusTotal.ppiercer} chaosr={bonusTotal.chaosr} pchaosr={bonusTotal.pchaosr} aetherr={bonusTotal.aetherr} paetherr={bonusTotal.paetherr} physd={bonusTotal.physd} bleedd={bonusTotal.bleedd} itd={bonusTotal.itd} coldd={bonusTotal.coldd} pierced={bonusTotal.pierced} energyrps={bonusTotal.energyrps} fpierced={bonusTotal.fpierced} bleedr={bonusTotal.bleedr} palld={bonusTotal.palld} firer={bonusTotal.firer} coldr={bonusTotal.coldr} lightr={bonusTotal.lightr} pelemr={bonusTotal.pelemr} bleedot={bonusTotal.bleedot} pbleedot={bonusTotal.pbleedot} pbleedd={bonusTotal.pbleedd} pas={bonusTotal.pas} />
             </div>
         </header>
         <div className="fluid-container">
